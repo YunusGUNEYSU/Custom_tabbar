@@ -1,4 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:chex_test_case/core/const/size_const.dart';
+import 'package:chex_test_case/core/utility/random_color_utility.dart';
 import 'package:flutter/material.dart';
 
 import 'package:chex_test_case/core/_core_exports.dart';
@@ -12,10 +14,24 @@ class ItemCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 70.0.px,
-      width: 90.0.percent,
-      child: Card(child: Center(child: Text("$itemName -Veri Seti-"))),
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: ApplicationConstants.cardPadding),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SizedBox(
+            height: ApplicationConstants.cardHeight,
+            width: 75.0.percent,
+            child: Card(child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                CircleAvatar(backgroundColor: RandomColor.randomColor),
+                Text("$itemName -Veri Seti-"),
+              ],
+            )),
+          ),
+        ],
+      ),
     );
   }
 }
